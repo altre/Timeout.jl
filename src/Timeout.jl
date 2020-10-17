@@ -40,7 +40,7 @@ Stacktrace:
 ```
 """
 macro timeout(limit, expr)
-    :(timeout(()->$expr, $limit))
+    :(timeout(()->$(esc(expr)), $(esc(limit))))
 end
 
 export @timeout
